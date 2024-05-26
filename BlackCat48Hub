@@ -1,1 +1,23 @@
+-- Roblox'taki mevcut oyunun ID'si
+local currentGameID = game.PlaceId
 
+-- Hedef oyunların ID'leri ve ilgili script URL'leri
+local games = {
+    ["17330290242"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/a2OP%20SCRİPT",
+    [""] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/a2OP%20SCRİPT"
+}
+
+-- Mevcut oyunun ID'sinin hedef oyunlar listesinde olup olmadığını kontrol et
+if games[tostring(currentGameID)] then
+    -- Hedef oyunda olduğunuzu bildir
+    print("Hedef oyunun içindeyiz. Script yükleniyor...")
+    
+    -- Belirtilen URL'den scripti al ve çalıştır
+    loadstring(game:HttpGet(games[tostring(currentGameID)]))()
+else
+    -- Hedef oyunun dışında olduğunuzu bildir
+    print("game not supported/oyun desteklenmiyor")
+    
+    -- Oyuncuyu oyun dışına at
+    game.Players.LocalPlayer:Kick("game not supported/oyun desteklenmiyor.")
+end

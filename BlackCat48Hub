@@ -4,7 +4,7 @@ local currentGameID = game.PlaceId
 -- Hedef oyunların ID'leri ve ilgili script URL'leri
 local games = {
     ["17330290242"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/a2OP%20SCRİPT",
-    [""] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/a2OP%20SCRİPT"
+    ["286090429"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/Arsenal%201"
 }
 
 -- Mevcut oyunun ID'sinin hedef oyunlar listesinde olup olmadığını kontrol et

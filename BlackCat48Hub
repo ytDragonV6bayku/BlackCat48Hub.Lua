@@ -1,24 +1,41 @@
--- Roblox'taki mevcut oyunun ID'si
+-- Mevcut oyunun ID'sini al
 local currentGameID = game.PlaceId
 
--- Hedef oyunların ID'leri ve ilgili script URL'leri
+-- Hedef oyunların ID'leri ve script URL'leri
 local games = {
     ["17330290242"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/a2OP%20SCRİPT",
-    ["286090429"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/Arsenal%201"
-["6516141723"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/Doors"
+    ["286090429"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/Arsenal%201",
+    ["6516141723"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/Doors",
+    ["6839171747"] = "https://raw.githubusercontent.com/ytDragonV6bayku/ARSENAL-2OP-SCR-PT/main/TRIAL%20IS%20SCRIPT/Doors"
 }
 
 -- Mevcut oyunun ID'sinin hedef oyunlar listesinde olup olmadığını kontrol et
 if games[tostring(currentGameID)] then
     -- Hedef oyunda olduğunuzu bildir
     print("Hedef oyunun içindeyiz. Script yükleniyor...")
-    
-    -- Belirtilen URL'den scripti al ve çalıştır
-    loadstring(game:HttpGet(games[tostring(currentGameID)]))()
+
+    -- Belirtilen URL'den scripti al
+    local scriptURL = games[tostring(currentGameID)]
+    print("Script URL'si:", scriptURL) -- Hata ayıklama mesajı
+
+    -- Scripti çalıştır
+    local success, error = pcall(loadstring(game:HttpGet(scriptURL)))
+
+    -- Script yüklenip çalıştırıldıysa bildir
+    if success then
+        print("Script başarıyla yüklendi ve çalıştırıldı.")
+    else
+        -- Script yüklenemiyorsa veya çalıştırılamıyorsa hata mesajını yazdır
+        print("Script yüklenemiyor veya çalıştırılamıyor:", error)
+    end
 else
     -- Hedef oyunun dışında olduğunuzu bildir
-    print("game not supported/oyun desteklenmiyor")
-    
-    -- Oyuncuyu oyun dışına at
-    game.Players.LocalPlayer:Kick("game not supported/oyun desteklenmiyor.")
+    -- Türkçe mesaj
+    print("Hedef oyun desteklenmiyor.")
+
+    -- İngilizce mesaj
+    print("Target game is not supported.")
+
+    -- Oyuncuyu oyundan at
+    game.Players.LocalPlayer:Kick("Hedef oyun desteklenmiyor./game is not supported.")
 end
